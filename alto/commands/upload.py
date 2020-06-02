@@ -73,9 +73,9 @@ def run_command(command: List[str], dry_run: bool) -> None:
 
 def transfer_flowcell(source: str, dest: str, dry_run: bool, lanes: List[str]) -> None:
     run_command(['gsutil', 'cp', '{0}/RunInfo.xml'.format(source), '{0}/RunInfo.xml'.format(dest)], dry_run)
-    assert os.path.exists('{0}/RTAComplete.txt'.format(source)) and os.path.exists('{0}/runParameters.xml'.format(source))
+    assert os.path.exists('{0}/RTAComplete.txt'.format(source)) and os.path.exists('{0}/RunParameters.xml'.format(source))
     run_command(['gsutil', 'cp', '{0}/RTAComplete.txt'.format(source), '{0}/RTAComplete.txt'.format(dest)], dry_run)
-    run_command(['gsutil', 'cp', '{0}/runParameters.xml'.format(source), '{0}/runParameters.xml'.format(dest)], dry_run)
+    run_command(['gsutil', 'cp', '{0}/RunParameters.xml'.format(source), '{0}/RunParameters.xml'.format(dest)], dry_run)
     basecall_string = '{0}/Data/Intensities/BaseCalls'
     if len(lanes) == 1 and lanes[0] == '*':
         # find all lanes
